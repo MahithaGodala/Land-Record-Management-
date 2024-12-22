@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registries Search</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+	<style>
+		body {
+			font-family: 'Open Sans', sans-serif;
+			background-color: #f0f0f0;
+		}
+		.container {
+			max-width: 600px;
+			margin: 40px auto;
+			padding: 20px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
+		.form-group {
+			margin-bottom: 20px;
+		}
+		.label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: 600;
+			color: #333;
+		}
+		.input-field {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.input-field:focus {
+			border-color: #aaa;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		.button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.button:hover {
+			background-color: #3e8e41;
+		}
+		.error {
+			color: #red;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+		.result {
+			margin-bottom: 20px;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			background-color: #f9f9f9;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Registries Search</h2>
+		<form>
+			<div class="form-group">
+				<label for="registry-type" class="label">Registry Type:</label>
+				<select id="registry-type" class="input-field" required>
+					<option value="">Select Registry Type</option>
+					<option value="Deed">Deed</option>
+					<option value="Mortgage">Mortgage</option>
+					<option value="Lease">Lease</option>
+					<option value="Other">Other</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="registry-number" class="label">Registry Number:</label>
+				<input type="text" id="registry-number" class="input-field" required>
+			</div>
+			<div class="form-group">
+				<label for="owner-name" class="label">Owner Name:</label>
+				<input type="text" id="owner-name" class="input-field" required>
+			</div>
+			<div class="form-group">
+				<label for="property-location" class="label">Property Location:</label>
+				<input type="text" id="property-location" class="input-field" required>
+			</div>
+			<button class="button" type="submit">Search</button>
+		</form>
+		<div id="results"></div>
+	</div>
+	
+	<script>
+		const form = document.querySelector('form');
+		const registryType = document.querySelector('#registry-type');
+		const registryNumber = document.querySelector('#registry-number');
+		const ownerName = document.querySelector('#owner-name');
+		const propertyLocation = document.querySelector('#property-location');
+		const results = document.querySelector('#results');
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			// Perform the search using the search criteria
+			const searchCriteria = {
+				registryType: registryType.value,
+				registryNumber: registryNumber.value,
+				ownerName: ownerName.value,
+				propertyLocation: propertyLocation.value
+			};
+
+			// Clear any existing results
+			results.innerHTML = '';
+
+			// Perform the search using an API or other data source
+			// For this example, we will just display a mock result
+			const result = {
+				registryType: searchCriteria.registryType,
+				registryNumber: searchCriteria.registryNumber,
+				ownerName: searchCriteria.ownerName,
+				propertyLocation: searchCriteria.propertyLocation,
+				date: '01/01/2022',
+				description: 'Mock result description'
+			};
+        

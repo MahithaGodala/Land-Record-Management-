@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Records Online Registration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f0f0f0; /* added background color */
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .input-field:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #3e8e41;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Land Records Online Registration</h2>
+        <form action="/process" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="username" class="label">Username:</label>
+                <input type="text" id="username" name="username" class="input-field" required>
+                <div class="error" id="username-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="label">Password:</label>
+                <input type="password" id="password" name="password" class="input-field" required>
+                <div class="error" id="password-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password" class="label">Confirm Password:</label>
+                <input type="password" id="cpassword" name="cpassword" class="input-field" required>
+                <div class="error" id="confirm-password-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="label">Full Name:</label>
+                <input type="text" id="name" name="name" class="input-field" required>
+                <div class="error" id="name-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="label">Email:</label>
+                <input type="email" id="email" name="email" class="input-field" required>
+                <div class="error" id="email-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="label">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="input-field" required>
+                <div class="error" id="phone-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="label">Address:</label>
+                <textarea id="address" name="address" class="input-field" required></textarea>
+                <div class="error" id="address-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="land-details" class="label">Land Details:</label>
+                <textarea id="landdetails" name="landdetails" class="input-field" required></textarea>
+                <div class="error" id="land-details-error"></div>
+            </div>
+            <button class="button" type="submit">Process</button>
+        </form>
+    </div>
+    
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Clear previous error messages
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(el => el.textContent = '');
+
+            // Validate username
+            const username = document.getElementById('username').value.trim();
+            if (username.length < 3) {
+                document.getElementById('username-error').textContent = 'Username must be at least 3 characters';
+                isValid = false;
+            }
+
+            // Validate password
+            const password = document.getElementById('password').value;
+            if (password.length < 6) {
+                document.getElementById('password-error').textContent = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+
+            // Validate confirm password
+            const confirmPassword = document.getElementById('cpassword').value;
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password-error').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // Validate name
+            const name = document.getElementById('name').value.trim();
+            if (name.length === 0) {
+                document.getElementById('name-error').textContent = 'Please enter your full name';
+                isValid = false;
+            }
+
+            // Validate email
+            const email = document.getElementById('email').value.trim();
+            if (!isValidEmail(email)) {
+                document.getElementById('email-error').textContent = 'Invalid email address';
+                isValid = false;
+            }
+
+            // Validate phone number
+            const phone = document.getElementById('phone').value.trim();
+            if (!isValidPhone(phone)) {
+                document.getElementById('phone-error').textContent = 'Invalid phone number';
+                isValid = false;
+            }
+
+            // Validate address
+            const address = document.getElementById('address').value.trim();
+            if (address.length === 0) {
+                document.getElementById('address-error').textContent = 'Please enter your address';
+                isValid = false;
+            }
+
+            // Validate land details
+            const landdetails = document.getElementById('landdetails').value.trim();
+            if (landdetails.length === 0) {
+                document.getElementById('land-details-error').textContent = 'Please enter land details';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            // Simple email validation regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            // Simple phone number validation regex
+            const phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phone);
+        }
+    </script>
+</body>
+</html>

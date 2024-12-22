@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<div id="headersection">
+    <h1>Online land System</h1>
+</div>
+<div id="bodysection">
+    <h2>Registration</h2>
+    <form action="/register" method="post" onsubmit="return validateForm()">
+        <input type="text" name="name" id="name" placeholder="Enter name" required><br><br>
+        <input type="tel" name="mobile" id="mobile" placeholder="Enter mobile number" required pattern="[0-9]{10}"><br><br>
+        <input type="password" name="password" id="password" placeholder="Enter password" required><br><br>
+        <input type="email" name="email" id="email" placeholder="Enter email" required><br><br>
+        <input type="text" name="address" id="address" placeholder="Enter address" required><br><br>
+		
+        <button type="submit">Register</button><br><br>
+        <p>Forgot password? <a href="#">Click here</a></p><br><br>
+    </form>
+</div>
+
+<script>
+function validateForm() {
+    var name = document.getElementById('name').value;
+    var mobile = document.getElementById('mobile').value;
+    var password = document.getElementById('password').value;
+    var email = document.getElementById('email').value;
+    var address = document.getElementById('address').value;
+    
+    if (name.trim() === '' || mobile.trim() === '' || password.trim() === '' || email.trim() === '' || address.trim() === '') {
+        alert("All fields are required");
+        return false;
+    }
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+        alert("Mobile number must be 10 digits");
+        return false;
+    }
+
+    // Add more validation rules for email, password, and address if needed
+
+    return true;
+}
+</script>
+</body>
+</html>

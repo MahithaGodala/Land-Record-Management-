@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tax Calculator</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+	<style>
+		body {
+			font-family: 'Open Sans', sans-serif;
+			background-color: #f0f0f0;
+		}
+		.container {
+			max-width: 600px;
+			margin: 40px auto;
+			padding: 20px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
+		.form-group {
+			margin-bottom: 20px;
+		}
+		.label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: 600;
+			color: #333;
+		}
+		.input-field {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.input-field:focus {
+			border-color: #aaa;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		.button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.button:hover {
+			background-color: #3e8e41;
+		}
+		.error {
+			color: #red;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+		.result {
+			margin-bottom: 20px;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			background-color: #f9f9f9;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Tax Calculator</h2>
+		  <form action="/tax" method="POST">
+
+			<div class="form-group">
+				<label for="property-value" class="label">Property Value:</label>
+				<input type="number" id="propertyvalue" class="input-field" required>
+			</div>
+			<div class="form-group">
+				<label for="tax-rate" class="label">Tax Rate (%):</label>
+				<input type="number" id="taxrate" class="input-field" required>
+			</div>
+			<button class="button" type="submit">Calculate Tax</button>
+		</form>
+		<div id="results"></div>
+	</div>
+	
+	<script>
+		const form = document.querySelector('form');
+		const propertyValue = document.querySelector('#property-value');
+		const taxRate = document.querySelector('#tax-rate');
+		const results = document.querySelector('#results');
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			// Calculate the tax
+			const tax = (propertyValue.value * taxRate.value) / 100;
+
+			// Display the result
+			results.innerHTML = `The tax is: $${tax.toFixed(2)}`;
+		});
+	</script>
+</body>
+</html>

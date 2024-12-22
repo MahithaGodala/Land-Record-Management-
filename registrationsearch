@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Records Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Land Records Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="#land-records">Land Records</a></li>
+                <li><a href="#registration-search">Registration Search</a></li>
+                <!-- Add other navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="land-records">
+            <h2>Land Records Search</h2>
+            <form id="land-record-form">
+                <label for="property-id">Search by Property ID:</label>
+                <input type="text" id="property-id" name="property-id" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="land-record-results"></div>
+        </section>
+
+        <section id="registration-search">
+            <h2>Registration Search</h2>
+            <form id="registration-search-form">
+                <label for="registration-id">Search by Registration ID:</label>
+                <input type="text" id="registration-id" name="registration-id" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="registration-search-results"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Land Records Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

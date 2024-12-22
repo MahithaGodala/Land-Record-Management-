@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Records Portal</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Land Records Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="Landsearch.html">Land Records</a></li>
+                <li><a href="Registries Search.html">Registration Search</a></li>
+                <li><a href="Tax Calculator.html">Tax Calculation</a></li>
+                <li><a href="fee.html">Fee Schedule</a></li>
+                <li><a href="Registration Process.html">Registration Process</a></li>
+                <li><a href="Onlinecomplaint.html">Complaint Logging</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="land-records">
+        <h2>Land Records</h2>
+        <!-- Search form for land records -->
+        <form action="/search-land-records" method="GET">
+            <label for="property-id">Search by Property ID:</label>
+            <input type="text" id="property-id" name="property-id" required>
+            <button type="submit">Search</button>
+        </form>
+        <!-- Display search results here -->
+        <div id="land-record-results"></div>
+    </section>
+
+    <!-- Other sections like Registration Search, Tax Calculation, Fee Schedule, Registration Process, Complaint Logging follow a similar structure -->
+
+    <footer>
+        <p>&copy; 2024 Land Records Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
